@@ -31,6 +31,34 @@ var ResumeSchema = new Schema({
 	contents: [{
 		type: Schema.ObjectId,
 		ref: 'Article'
+	}],
+	contactDetails: {
+		type: Schema.ObjectId,
+		ref: 'Article'
+	},
+	objective: {
+		type: Schema.ObjectId,
+		ref: 'Article'
+	},
+	quickSummary: {
+		type: Schema.ObjectId,
+		ref: 'Article'
+	},
+	experiences : [{
+		type: Schema.ObjectId,
+		ref: 'Article'
+	}],
+	skills : [{
+		type: Schema.ObjectId,
+		ref: 'Article'
+	}],
+	academicBackground: [{
+		type: Schema.ObjectId,
+		ref: 'Article'
+	}],
+	hobbies: [{
+		type: Schema.ObjectId,
+		ref: 'Article'
 	}]
 });
 

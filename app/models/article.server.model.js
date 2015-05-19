@@ -33,7 +33,7 @@ var ArticleSchema = new Schema({
 	},
 	contentType: {
 		type:  String,
-		enum: ['default','objective', 'quickSummary', 'experiences', 'skills', 'academicBackground', 'hobby', 'contactDetails'],
+		enum: ['default','objective', 'quickSummary', 'experiences', 'skills', 'academicBackground', 'hobbies', 'contactDetails'],
 		default: 'default'
 	},
 	user: {
