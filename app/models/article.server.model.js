@@ -14,6 +14,12 @@ var ArticleSchema = new Schema({
 		type: Date,
 		default: Date.now
 	},
+	startDate: {
+		type: Date
+	},
+	endDate: {
+		type: Date	
+	},
 	title: {
 		type: String,
 		default: '',
@@ -24,6 +30,11 @@ var ArticleSchema = new Schema({
 		type: String,
 		default: '',
 		trim: true
+	},
+	contentType: {
+		type:  String,
+		enum: ['default','objective', 'quickSummary', 'experiences', 'skills', 'academicBackground', 'hobby', 'contactDetails'],
+		default: 'default'
 	},
 	user: {
 		type: Schema.ObjectId,
