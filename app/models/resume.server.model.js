@@ -24,12 +24,14 @@ var ResumeSchema = new Schema({
 		type: Schema.ObjectId,
 		ref: 'User'
 	},
-	spectators: {
-		
-	},
-	contents: {
-		
-	}
+	spectators: [{
+		type: Schema.ObjectId,
+		ref: 'User'	
+	}],
+	contents: [{
+		type: Schema.ObjectId,
+		ref: 'Article'
+	}]
 });
 
 mongoose.model('Resume', ResumeSchema);
