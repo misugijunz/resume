@@ -6,8 +6,8 @@ module.exports = {
 		title: 'resume - Development Environment'
 	},
 	facebook: {
-		clientID: process.env.FACEBOOK_ID || 'APP_ID',
-		clientSecret: process.env.FACEBOOK_SECRET || 'APP_SECRET',
+		clientID: process.env.FACEBOOK_ID || '104613349873454',
+		clientSecret: process.env.FACEBOOK_SECRET || '8b3f3856f48f5afe36057b9934046f49',
 		callbackURL: '/auth/facebook/callback'
 	},
 	twitter: {
@@ -21,8 +21,8 @@ module.exports = {
 		callbackURL: '/auth/google/callback'
 	},
 	linkedin: {
-		clientID: process.env.LINKEDIN_ID || 'APP_ID',
-		clientSecret: process.env.LINKEDIN_SECRET || 'APP_SECRET',
+		clientID: process.env.LINKEDIN_ID || '75p4ji99roszkp',
+		clientSecret: process.env.LINKEDIN_SECRET || 'aYMc9UVOL9xA6Xb4',
 		callbackURL: '/auth/linkedin/callback'
 	},
 	github: {
