@@ -71,9 +71,9 @@ var UserSchema = new Schema({
 	roles: {
 		type: [{
 			type: String,
-			enum: ['user', 'admin', 'company']
+			enum: ['admin', 'company']
 		}],
-		default: ['user']
+		default: 'company'
 	},
 	updated: {
 		type: Date
@@ -88,7 +88,11 @@ var UserSchema = new Schema({
 	},
 	resetPasswordExpires: {
 		type: Date
-	}
+	},
+	potentialEmployees: [{
+		type: Schema.ObjectId,
+		ref: 'Article'
+	}]
 });
 
 /**
