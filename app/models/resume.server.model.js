@@ -28,10 +28,6 @@ var ResumeSchema = new Schema({
 		type: Schema.ObjectId,
 		ref: 'User'	
 	}],
-	contents: [{
-		type: Schema.ObjectId,
-		ref: 'Article'
-	}],
 	contactDetails: {
 		type: Schema.ObjectId,
 		ref: 'Article'
@@ -57,6 +53,10 @@ var ResumeSchema = new Schema({
 		ref: 'Article'
 	}],
 	hobbies: [{
+		type: Schema.ObjectId,
+		ref: 'Article'
+	}],
+	contents: [{
 		type: Schema.ObjectId,
 		ref: 'Article'
 	}]
