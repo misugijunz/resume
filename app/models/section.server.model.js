@@ -20,10 +20,10 @@ var SectionSchema = new Schema({
 		type: Date,
 		default: Date.now
 	},
-	user: {
+	articles: [{
 		type: Schema.ObjectId,
-		ref: 'User'
-	}
+		ref: 'Article'
+	}]
 });
 
 mongoose.model('Section', SectionSchema);

@@ -20,6 +20,10 @@ var ResumeSchema = new Schema({
 		type: Date,
 		default: Date.now
 	},
+	biodatum: {
+		type: Schema.ObjectId,
+		ref: 'Biodatum'	
+	},
 	owner: {
 		type: Schema.ObjectId,
 		ref: 'User'
@@ -28,37 +32,9 @@ var ResumeSchema = new Schema({
 		type: Schema.ObjectId,
 		ref: 'User'	
 	}],
-	contactDetails: {
+	sections:[{
 		type: Schema.ObjectId,
-		ref: 'Article'
-	},
-	objective: {
-		type: Schema.ObjectId,
-		ref: 'Article'
-	},
-	quickSummary: {
-		type: Schema.ObjectId,
-		ref: 'Article'
-	},
-	experiences : [{
-		type: Schema.ObjectId,
-		ref: 'Article'
-	}],
-	skills : [{
-		type: Schema.ObjectId,
-		ref: 'Article'
-	}],
-	academicBackground: [{
-		type: Schema.ObjectId,
-		ref: 'Article'
-	}],
-	hobbies: [{
-		type: Schema.ObjectId,
-		ref: 'Article'
-	}],
-	contents: [{
-		type: Schema.ObjectId,
-		ref: 'Article'
+		ref: 'Section'	
 	}]
 });
 
