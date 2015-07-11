@@ -15,7 +15,8 @@ var ArticleSchema = new Schema({
 		default: Date.now
 	},
 	startDate: {
-		type: Date
+		type: Date,
+		required: 'There is always a start for something'
 	},
 	endDate: {
 		type: Date	

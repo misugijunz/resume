@@ -73,7 +73,7 @@ var UserSchema = new Schema({
 			type: String,
 			enum: ['admin', 'company']
 		}],
-		default: 'company'
+		default: 'admin'
 	},
 	updated: {
 		type: Date

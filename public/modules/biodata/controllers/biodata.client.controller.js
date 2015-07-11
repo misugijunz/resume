@@ -1,15 +1,28 @@
 'use strict';
 
 // Biodata controller
-angular.module('biodata').controller('BiodataController', ['$scope', '$stateParams', '$location', 'Authentication', 'Biodata',
-	function($scope, $stateParams, $location, Authentication, Biodata) {
+angular.module('biodata').controller('BiodataController', ['$scope', '$stateParams', '$location', '$sce', 'Authentication', 'Biodata',
+	function($scope, $stateParams, $location, $sce, Authentication, Biodata) {
 		$scope.authentication = Authentication;
 
 		// Create new Biodatum
 		$scope.create = function() {
 			// Create new Biodatum object
+			console.log(this.dateOfBirth);
 			var biodatum = new Biodata ({
-				name: this.name
+				name: this.name,
+				dateOfBirth: new Date.parse(this.dateOfBirth),
+				address: this.address,
+				email: {
+					home: this.email.home
+				},
+				phones: {
+					home: this.phones.home,
+					mobile: this.phones.mobile
+				},
+				socials: {
+					skype: this.socials.skype
+				}
 			});
 
 			// Redirect after save
@@ -62,5 +75,41 @@ angular.module('biodata').controller('BiodataController', ['$scope', '$statePara
 				biodatumId: $stateParams.biodatumId
 			});
 		};
-	}
+		
+		$scope.tinymceOptions = {
+	        resize: false,
+	        //width: 400,  // I *think* its a number and not '400' string
+	        height: 150,
+	        theme: "modern",
+		    plugins: [
+		        "advlist autolink lists link image charmap print preview hr anchor pagebreak",
+		        "wordcount visualblocks visualchars code fullscreen",
+		        "emoticons template paste textcolor"
+		    ],
+	        toolbar: 'undo redo styleselect bold italic bullist forecolor backcolor',
+			raw: true,
+			trusted: true,
+	        menu : { // this is the complete default configuration
+	            edit   : {title : 'Edit'  , items : 'undo redo | cut copy paste pastetext | selectall'},
+	            insert : {title : 'Insert', items : 'bullist numlist outdent indent | link'},
+	            format : {title : 'Format', items : 'bold italic underline strikethrough superscript subscript | formats | removeformat'},
+	        },
+	
+	        init_instance_callback: function(editor) {
+	          var textContentTrigger = function() {
+	            $scope.textContent = editor.getBody().textContent;
+	            $scope.$apply();
+	          };
+	
+	          editor.on('KeyUp', textContentTrigger);
+	          editor.on('ExecCommand', textContentTrigger);
+	          editor.on('SetContent', function(e) {
+	            if(!e.initial)
+	              textContentTrigger();
+	          });
+	        }
+	    };
+		
+	}	
+	
 ]);

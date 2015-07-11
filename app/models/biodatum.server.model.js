@@ -19,7 +19,7 @@ var BiodatumSchema = new Schema({
 	},
 	dateOfBirth: {
 		type: Date,
-		default: Date.now	
+		required: 'Please enter your date of birth.'	
 	},
 	address: {
 		type: String,
@@ -27,12 +27,12 @@ var BiodatumSchema = new Schema({
 		required: 'Please enter your address.'
 	},
 	 email: {
-        work: {type: mongoose.SchemaTypes.Email, required: true},
+        work: {type: mongoose.SchemaTypes.Email},
         home: {type: mongoose.SchemaTypes.Email, required: true},
     },
 	phones: {
-		work: {type: String, required: true},
-		home: {type: String, required: true},
+		mobile: {type: String, required: true},
+		home: {type: String},
 	},
 	created: {
 		type: Date,
