@@ -24,7 +24,7 @@ var ResumeSchema = new Schema({
 		type: Schema.ObjectId,
 		ref: 'Biodatum'	
 	},
-	owner: {
+	user: {
 		type: Schema.ObjectId,
 		ref: 'User'
 	},

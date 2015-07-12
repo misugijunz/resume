@@ -12,6 +12,18 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <label class="control-label" for="name">Articles</label>
+                    <div class="controls" ng-repeat="field in artics.fields track by $index">
+                        <md-select data-ng-model="artics.fields[$index]" md-on-open="findArticles()" style="min-width: 200px;">
+                            <md-select-label>{{ artics.fields[$index] ? artics.fields[$index].name : 'Set an article' }}</md-select-label>
+                            <md-option ng-value="artic" ng-repeat="artic in articles">{{artic.title}}</md-option>
+                        </md-select>
+                        <md-button md-no-ink="" class="md-primary" ng-click="removeArtic(true, $index);" type="button">delete</md-button>                        
+                    </div>
+                    <md-button md-no-ink="" class="md-primary" ng-click="addArtic();" type="button">Add new article</md-button>
+                    
+                </div>
+                <div class="form-group">
                     <input type="submit" class="btn btn-default">
                 </div>
 				<div data-ng-show="error" class="text-danger">
@@ -19,5 +31,6 @@
 				</div>
             </fieldset>
         </form>
+        <pre>{{ artics | json }}</pre>
     </div>
 </section>

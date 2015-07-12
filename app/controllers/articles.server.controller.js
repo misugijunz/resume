@@ -47,6 +47,7 @@ exports.update = function(req, res) {
 				message: errorHandler.getErrorMessage(err)
 			});
 		} else {
+			article.birthOfDate = new Date(article.birthOfDate);
 			res.json(article);
 		}
 	});

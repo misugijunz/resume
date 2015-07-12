@@ -13,9 +13,15 @@
                 </div>
                 <div class="form-group">
                     <label class="control-label" for="dateOfBirh">Date of Birth</label>
-                    <div class="controls">
-                        <input type="date" data-ng-model="biodatum.dateOfBirth" id="dateOfBirth" class="form-control" placeholder="yyyy-MM-dd" required>
-                    </div>
+                    <p class="input-group">
+                        
+                            <!--<input type="date" data-ng-model="biodatum.dateOfBirth" id="dateOfBirth" class="form-control" placeholder="yyyy-MM-dd" required>-->
+                        <input type="text" ui-date class="form-control" datepicker-popup="{{format}}" ng-model="biodatum.dateOfBirth" is-open="opened" min-date="minDate" max-date="'2015-06-22'" datepicker-options="dateOptions"  ng-required="true" close-text="Close" /> 
+                      
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                        </span>
+                     </p>
                 </div>
                 <div class="form-group">
 					<label class="control-label" for="address">Address</label>

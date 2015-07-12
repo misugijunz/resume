@@ -68,11 +68,9 @@ var UserSchema = new Schema({
 	},
 	providerData: {},
 	additionalProvidersData: {},
-	roles: {
-		type: [{
-			type: String,
-			enum: ['admin', 'company']
-		}],
+	role: {
+		type: String,
+		enum: ['admin', 'company'],
 		default: 'admin'
 	},
 	updated: {
@@ -126,7 +124,7 @@ UserSchema.methods.authenticate = function(password) {
 };
 
 UserSchema.methods.getUserRole = function () {
-	
+	return this.role;
 };
 
 /**

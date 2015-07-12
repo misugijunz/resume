@@ -1,15 +1,28 @@
 'use strict';
 
 // Sections controller
-angular.module('sections').controller('SectionsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Sections',
-	function($scope, $stateParams, $location, Authentication, Sections) {
+angular.module('sections').controller('SectionsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Sections', 'Articles',
+	function($scope, $stateParams, $location, Authentication, Sections, Articles) {
 		$scope.authentication = Authentication;
+		$scope.articleCounter = -1;
+		$scope.artics = {fields: []};
 
 		// Create new Section
 		$scope.create = function() {
 			// Create new Section object
+			
+			var artics_objId = [];
+			
+			for (var i = 0; i < $scope.artics.fields.length; i++){
+				console.log("sects " + i);
+				console.log($scope.artics.fields[i]);
+				artics_objId.push($scope.artics.fields[i]._id);
+			}
+			
+			
 			var section = new Sections ({
-				name: this.name
+				name: this.name,
+				articles: artics_objId
 			});
 
 			// Redirect after save
@@ -62,5 +75,39 @@ angular.module('sections').controller('SectionsController', ['$scope', '$statePa
 				sectionId: $stateParams.sectionId
 			});
 		};
+		
+		// Find a list of Section
+		$scope.findArticles = function() {
+			$scope.articles = Articles.query();
+		};
+		
+		
+		/*$scope.updateArticleCounter = function() {
+			$scope.articleCounter = $scope.resume.length;
+			$scope.sects = [];
+			for (var i = 0; i < $scope.sectionCounter; i++){
+				$scope.sects.push(new Sections());
+			}
+			return $scope.updateSectionCounter;	
+		};*/
+		
+		$scope.addArtic = function(){
+			$scope.articleCounter++;
+			//$scope.sects.push(new Sections());
+			$scope.artics.fields.push('');
+		}
+		
+		$scope.removeArtic = function(indexed, index){
+			if (indexed){
+				if (index > -1){
+					$scope.artics.fields.splice(index);
+					$scope.articleCounter--;
+				}
+			} else{
+				$scope.articleCounter--;
+				$scope.artics.fields.pop();
+			}
+			
+		}
 	}
 ]);

@@ -18,7 +18,8 @@
 					</div>
 					<label class="control-label" for="endDate">End Date</label>
 					<div class="controls">
-						<input name="endDate" type="date" data-ng-model="endDate" id="endDate" class="formControl">
+						<input name="endDate" type="date" data-ng-model="endDate" id="endDate" class="formControl" data-ng-hide="isLatestOne">
+						<md-checkbox ng-model="isLatestOne" aria-label="current">current</md-checkbox>
 					</div>
 				</div>
 				<div class="form-group">

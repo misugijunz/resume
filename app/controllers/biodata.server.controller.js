@@ -40,7 +40,7 @@ exports.update = function(req, res) {
 	var biodatum = req.biodatum ;
 
 	biodatum = _.extend(biodatum , req.body);
-	//biodatum.dateOfBirth = new Date().parse(biodatum.dateOfBirth);
+	//biodatum.dateOfBirth = new Date(biodatum.dateOfBirth);
 
 	biodatum.save(function(err) {
 		if (err) {

@@ -23,7 +23,11 @@ var SectionSchema = new Schema({
 	articles: [{
 		type: Schema.ObjectId,
 		ref: 'Article'
-	}]
+	}],
+	user: {
+		type: Schema.ObjectId,
+		ref: 'User'
+	}		
 });
 
 mongoose.model('Section', SectionSchema);

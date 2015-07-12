@@ -12,12 +12,35 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <label class="control-label" for="profile">Set or Add New Profile</label>
+                    <div class="controls">
+                        <md-select data-ng-model="profile" md-on-open="findBiodata()" style="min-width: 200px;">
+                            <md-select-label>{{ profile ? profile.name : 'Set a profile' }}</md-select-label>
+                            <md-option ng-value="profile" ng-repeat="profile in biodata">{{profile.name}}</md-option>
+                        </md-select>
+                        <p class="md-caption">You have assigned the task to: {{ profile ? profile.name : 'No one yet' }}</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="name">Sections</label>
+                    <div class="controls" ng-repeat="field in sects.fields track by $index">
+                        <md-select data-ng-model="sects.fields[$index]" md-on-open="findSections()" style="min-width: 200px;">
+                            <md-select-label>{{ sects.fields[$index] ? sects.fields[$index].name : 'Set a section' }}</md-select-label>
+                            <md-option ng-value="sect" ng-repeat="sect in sections">{{sect.name}}</md-option>
+                        </md-select>
+                        <md-button md-no-ink="" class="md-primary" ng-click="removeSect($index);" type="button">delete</md-button>                        
+                    </div>
+                    <md-button md-no-ink="" class="md-primary" ng-click="addSect();" type="button">Add new section</md-button>
+                    
+                </div>
+                <div class="form-group">
                     <input type="submit" class="btn btn-default">
                 </div>
 				<div data-ng-show="error" class="text-danger">
 					<strong data-ng-bind="error"></strong>
 				</div>
             </fieldset>
+            <pre>{{ sects | json }}</pre>
         </form>
     </div>
 </section>

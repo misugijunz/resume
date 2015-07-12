@@ -21,6 +21,17 @@ exports.userByID = function(req, res, next, id) {
 	});
 };
 
+exports.userByRole = function(req, res, next, status) {
+	User.findOne({
+		role: status
+	}).exec(function(err, user) {
+		if (err) return next(err);
+		if (!user) return next(new Error('Failed to load User with role ' + status));
+		req.profile = user;
+		next();
+	});
+};
+
 /**
  * Require login routing middleware
  */

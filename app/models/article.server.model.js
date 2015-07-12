@@ -21,6 +21,9 @@ var ArticleSchema = new Schema({
 	endDate: {
 		type: Date	
 	},
+	isLatestOne: {
+		type: Boolean	
+	},
 	title: {
 		type: String,
 		default: '',

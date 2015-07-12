@@ -4,14 +4,15 @@
 angular.module('biodata').controller('BiodataController', ['$scope', '$stateParams', '$location', '$sce', 'Authentication', 'Biodata',
 	function($scope, $stateParams, $location, $sce, Authentication, Biodata) {
 		$scope.authentication = Authentication;
-
+		$scope.format = 'dd-MMMM-yyyy';
+		
 		// Create new Biodatum
 		$scope.create = function() {
 			// Create new Biodatum object
-			console.log(this.dateOfBirth);
+			//console.log(this.dateOfBirth);
 			var biodatum = new Biodata ({
 				name: this.name,
-				dateOfBirth: new Date.parse(this.dateOfBirth),
+				dateOfBirth: new Date(this.dateOfBirth),
 				address: this.address,
 				email: {
 					home: this.email.home
@@ -56,6 +57,7 @@ angular.module('biodata').controller('BiodataController', ['$scope', '$statePara
 		// Update existing Biodatum
 		$scope.update = function() {
 			var biodatum = $scope.biodatum;
+			//biodatum.dateOfBirth = new Date(this.dateOfBirth);
 
 			biodatum.$update(function() {
 				$location.path('biodata/' + biodatum._id);
@@ -74,6 +76,7 @@ angular.module('biodata').controller('BiodataController', ['$scope', '$statePara
 			$scope.biodatum = Biodata.get({ 
 				biodatumId: $stateParams.biodatumId
 			});
+			$scope.date = new Date($scope.biodatum.dateOfBirth);
 		};
 		
 		$scope.tinymceOptions = {
@@ -109,7 +112,23 @@ angular.module('biodata').controller('BiodataController', ['$scope', '$statePara
 	          });
 	        }
 	    };
+		$scope.toggleMin = function() {
+		    $scope.minDate = $scope.minDate ? null : new Date();
+		};
+		$scope.toggleMin();
 		
+		$scope.open = function($event) {
+		    $event.preventDefault();
+		    $event.stopPropagation();
+		
+		    $scope.opened = true;
+		};
+		
+		$scope.dateOptions = {
+		    formatYear: 'yy',
+		    startingDay: 1
+		};
+		$scope.skipValidation = function(value){ $sce.trustAsHtml(value);};
 	}	
 	
 ]);
